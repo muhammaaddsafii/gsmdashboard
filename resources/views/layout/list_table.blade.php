@@ -31,9 +31,9 @@
         src="http://code.jquery.com/jquery-3.3.1.js"
         integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous"></script>
-  
+
         <script src="assets/js/modernizr.min.js"></script>
-        
+
     </head>
 
 
@@ -176,7 +176,7 @@
                                 <li class="hidden-xs">
                                     <a href="#" id="btn-fullscreen" class="waves-effect waves-light"><i class="icon-size-fullscreen"></i></a>
                                 </li>
-                              
+
                                 <li class="dropdown top-menu-item-xs">
                                     <a href="" class="dropdown-toggle profile waves-effect waves-light" data-toggle="dropdown" aria-expanded="true"><img src="{{asset('assets/images/users/avatar-1.jpg')}}" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
@@ -206,14 +206,7 @@
 
                         	<li class="text-muted menu-title">Navigation</li>
                             <li><a href="{{url('/')}}"><i class=" ti-layout-media-center-alt"></i><span>Homepage</span></a></li>
-                            
-                            <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect"><i class="ti-agenda"></i> <span class="label label-primary pull-right">2</span><span> Input Materi </span></a>
-                                <ul class="list-unstyled">
-                                	<li><a href="{{ url('/input_materi_basic') }}">Level Basic</a></li>
-                                    <li><a href="{{ url('/input_materi_advanced') }}">Level Advanced</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="{{ url('/input_modul') }}"><i class="ti-agenda"></i><span>Input Modul</span></a></li>
 
                             <li class="text-muted menu-title">List</li>
                             <li><a href="{{ url('/list_user') }}"><i class="ti-user"></i><span>List User</span></a></li>
@@ -222,7 +215,7 @@
                                 <ul class="list-unstyled">
                                     <li><a href="{{ url('/list_sekolah_gsm') }}">Sekolah Model GSM</a></li>
                                     <li><a href="{{ url('/list_sekolah_terdaftar') }}">Sekolah Terdaftar di Elearning</a></li>
-                                    <li><a href="{{ url('/list_sekolah_indonesia') }}">Sekolah di Indonesia</a></li>                                   
+                                    <li><a href="{{ url('/list_sekolah_indonesia') }}">Sekolah di Indonesia</a></li>
                                 </ul>
                             </li>
 
@@ -247,15 +240,15 @@
                     <div class="clearfix"></div>
                 </div>
             </div>
-            <!-- Left Sidebar End --> 
+            <!-- Left Sidebar End -->
 
 
 
             <!-- ============================================================== -->
             <!-- Start right Content here -->
-            <!-- ============================================================== -->                      
+            <!-- ============================================================== -->
             @yield('content')
-            
+
             <!-- ============================================================== -->
             <!-- End Right content here -->
             <!-- ============================================================== -->
@@ -277,28 +270,28 @@
         <script src="{{asset('assets/js/jquery.nicescroll.js')}}"></script>
         <script src="{{asset('assets/js/jquery.scrollTo.min.js')}}"></script>
 
-		
+
 		<script src="{{asset('assets/js/jquery.core.js')}}"></script>
         <script src="{{asset('assets/js/jquery.app.js')}}"></script>
 
         <!-- Examples -->
 	    <script src="{{asset('assets/plugins/magnific-popup/js/jquery.magnific-popup.min.js')}}"></script>
-	    <script src="{{asset('assets/plugins/jquery-datatables-editable/jquery.dataTables.js')}}"></script> 
+	    <script src="{{asset('assets/plugins/jquery-datatables-editable/jquery.dataTables.js')}}"></script>
 	    <script src="{{asset('assets/plugins/datatables/dataTables.bootstrap.js')}}"></script>
 	    <script src="{{asset('assets/plugins/tiny-editable/mindmup-editabletable.js')}}"></script>
         <script src="{{asset('assets/plugins/tiny-editable/numeric-input-example.js')}}"></script>
-        
+
         <script src="{{asset('assets/pages/datatables.editable.init.js')}}"></script>
 
         <!-- Modal-Effect -->
         <script src="{{asset('assets/plugins/custombox/js/custombox.min.js')}}"></script>
         <script src="{{asset('assets/plugins/custombox/js/legacy.min.js')}}"></script>
-     
+
         <script>
 			$('#mainTable').editableTableWidget().numericInputExample().find('td:first').focus();
 		</script>
-		
-        
+
+
 
     </body>
 </html>

@@ -34,12 +34,8 @@ class PagesController extends Controller
         return view('list_permintaan_assesor');
     }
 
-    public function input_materi_basic(){
-        return view('Input_materi_basic');
-    }
-
-    public function input_materi_advanced(){
-        return view('Input_materi_advanced');
+    public function input_modul(){
+        return view('input_modul');
     }
 
     public function list_materi_basic(){

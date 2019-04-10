@@ -9,7 +9,7 @@
         {{-- <link rel="shortcut icon" href="{{asset('assets/images/gsm_logo.png')}}"> --}}
 
         <title>GSM Dashboard</title>
-        
+
         <!--Morris Chart CSS -->
 		<link rel="stylesheet" href="{{asset('assets/plugins/morris/morris.css')}}">
         <link href="{{asset('assets/plugins/bootstrap-sweetalert/sweet-alert.css')}}" rel="stylesheet" type="text/css">
@@ -39,7 +39,7 @@
              width: 100%;  /* The width is the width of the web page */
             }
          </style>
-     
+
     </head>
 
 
@@ -182,7 +182,7 @@
                                 <li class="hidden-xs">
                                     <a href="#" id="btn-fullscreen" class="waves-effect waves-light"><i class="icon-size-fullscreen"></i></a>
                                 </li>
-                              
+
                                 <li class="dropdown top-menu-item-xs">
                                     <a href="" class="dropdown-toggle profile waves-effect waves-light" data-toggle="dropdown" aria-expanded="true"><img src="{{asset('assets/images/users/avatar-1.jpg')}}" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
@@ -212,16 +212,8 @@
 
                         <li class="text-muted menu-title">Navigation</li>
                         <li><a href="{{url('/')}}"><i class=" ti-layout-media-center-alt"></i><span>Homepage</span></a></li>
-                            
-                            <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect"><i class="ti-agenda"></i> <span class="label label-primary pull-right">2</span><span> Input Materi </span></a>
-                                <ul class="list-unstyled">
-                                        <li><a href="{{ url('/input_materi_basic') }}">Level Basic</a></li>
-                                        <li><a href="{{ url('/input_materi_advanced') }}">Level Advanced</a></li>
-                                    </ul>
-                            </li>
-
-                            <li class="text-muted menu-title">List</li>
+                        <li><a href="{{ url('/input_modul') }}"><i class="ti-agenda"></i><span>Input Modul</span></a></li>
+                        <li class="text-muted menu-title">List</li>
                         <li><a href="{{ url('/list_user') }}"><i class="ti-user"></i><span>List User</span></a></li>
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class=" ti-pencil-alt"></i><span class="label label-success pull-right">3</span><span>List Sekolah</span></span> </a>
@@ -229,7 +221,7 @@
                                     <li><a href="{{ url('/list_sekolah_gsm') }}">Sekolah Model GSM</a></li>
                                     <li><a href="{{ url('/list_sekolah_terdaftar') }}">Sekolah Terdaftar di Elearning</a></li>
                                     <li><a href="{{ url('/list_sekolah_indonesia') }}">Sekolah di Indonesia</a></li>
-                                   
+
                                 </ul>
                             </li>
 
@@ -254,15 +246,15 @@
                     <div class="clearfix"></div>
                 </div>
             </div>
-            <!-- Left Sidebar End --> 
+            <!-- Left Sidebar End -->
 
 
 
             <!-- ============================================================== -->
             <!-- Start right Content here -->
-            <!-- ============================================================== -->                      
+            <!-- ============================================================== -->
             @yield('content')
-            
+
             <!-- ============================================================== -->
             <!-- End Right content here -->
             <!-- ============================================================== -->
@@ -294,20 +286,20 @@
 
         <!-- chatjs  -->
         <script src="{{asset('assets/pages/jquery.chat.js')}}"></script>
-        <script src="{{asset('assets/plugins/peity/jquery.peity.min.js')}}"></script>		
+        <script src="{{asset('assets/plugins/peity/jquery.peity.min.js')}}"></script>
 		<script src="{{asset('assets/js/jquery.core.js')}}"></script>
         <script src="{{asset('assets/js/jquery.app.js')}}"></script>
         <script src="{{asset('assets/pages/jquery.dashboard_2.js')}}"></script>
-        
+
         <script
         src="http://code.jquery.com/jquery-3.3.1.js"
         integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous"></script>
-        
+
         <!-- Modal-Effect -->
         <script src="{{asset('assets/plugins/custombox/js/custombox.min.js')}}"></script>
         <script src="{{asset('assets/plugins/custombox/js/legacy.min.js')}}"></script>
-        
+
         <script>
     </script>
     <script>
