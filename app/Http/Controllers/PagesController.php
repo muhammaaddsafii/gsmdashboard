@@ -57,4 +57,8 @@ class PagesController extends Controller
     public function detail_user(){
         return view('detail_user');
     }
+
+    public function penilaian_user(){
+        return view('penilaian_user');
+    }
 }
