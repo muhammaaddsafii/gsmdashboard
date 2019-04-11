@@ -207,7 +207,7 @@
                         	<li class="text-muted menu-title">Navigation</li>
                             <li><a href="{{url('/')}}"><i class=" ti-layout-media-center-alt"></i><span>Homepage</span></a></li>
                             <li><a href="{{ url('/input_modul') }}"><i class="ti-agenda"></i><span>Input Modul</span></a></li>
-
+                            <li><a href="{{ url('/penilaian_user') }}"><i class="ti-medall"></i><span>Penilaian User</span></a></li>
                             <li class="text-muted menu-title">List</li>
                             <li><a href="{{ url('/list_user') }}"><i class="ti-user"></i><span>List User</span></a></li>
                             <li class="has_sub">

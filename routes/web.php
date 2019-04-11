@@ -23,3 +23,4 @@ Route::get('/list_materi_basic', 'PagesController@list_materi_basic');
 Route::get('/list_materi_advanced', 'PagesController@list_materi_advanced');
 Route::get('/detail_sekolah', 'PagesController@detail_sekolah');
 Route::get('/detail_user', 'PagesController@detail_user');
+Route::get('/penilaian_user', 'PagesController@penilaian_user');
