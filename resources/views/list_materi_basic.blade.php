@@ -23,7 +23,7 @@
                                     </ul>
                                 </div>
 
-								<h4 class="page-title">List Materi Basic  GSM</h4>
+								<h4 class="page-title">List Materi Basic </h4>
 								<ol class="breadcrumb">
 									<li>
 										<a href="{{ url('/') }}">GSM Dashboard</a>
@@ -50,63 +50,12 @@
 										<table class="table table-striped" id="datatable-editable">
 												<thead>
 													<tr>
-														<th>Nama Materi</th>
+														<th>Judul</th>
+														<th>Kategori</th>
 														<th>Deskripsi</th>
-														<th>Tantangan</th>
-														{{-- <th>Status</th> --}}
-														<th>Actions</th>
+														<th style="width:100px;">Actions</th>
 													</tr>
 												</thead>
-												<tbody>
-													<tr class="gradeC">
-														<td>Materi A</td>
-														<td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
-															standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to 
-															make a type specimen book
-														</td>
-														<td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
-																standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to 
-																make a type specimen book</td>
-														{{-- <td>Negeri</td> --}}
-														<td class="actions">
-															<a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-															<a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-															<a href="#" class="on-default edit-row">View</a>
-													
-														</td>
-													</tr>
-													<tr class="gradeC">
-														<td>Materi B</td>
-														<td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
-																standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to 
-																make a type specimen book</td>
-														<td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
-																standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to 
-																make a type specimen book</td>
-														{{-- <td>Negeri</td> --}}
-														<td class="actions">
-															<a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-															<a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-															<a href="#" class="on-default edit-row">View</a>
-														
-														</td>
-													</tr>
-													<tr class="gradeU">
-														<td>Materi C</td>
-														<td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
-																standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to 
-																make a type specimen book</td>
-														<td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
-																standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to 
-																make a type specimen book</td>
-														{{-- <td>Negeri</td> --}}
-														<td class="actions">
-															<a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-															<a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-															<a href="#" class="on-default edit-row">View</a>
-														</td>
-													</tr>
-												</tbody>
 											</table>
                                 </div>
                             </div>
@@ -132,6 +81,86 @@
             <!-- ============================================================== -->
             <!-- End Right content here -->
             <!-- ============================================================== -->
+
+			<script>
+			  $(document).ready(function(){
+				$("#datatable-editable").DataTable();
+					$.ajax({
+					type: 'GET',
+					url: "http://localhost/elearning/public/api/v1/modul/grade/basic",
+					})
+					.done(function(data){
+						// Ini Untuk melihat respon yang didapatkan setelah melakukan req GET
+						console.log(data)
+
+						// Memasukan respon data dari api ke dalam variable baru : myJsonData
+						myJsonData = data;
+						
+						// Ini memanggil fungsi populateDataTable dengan parameter yang diisi dengan data dari myJsonData 
+						populateDataTable(myJsonData);
+			
+					})
+
+					// Ini adalah function javascript yang sebelumnya dipanggil dengan data sebagai nama parameternya
+					function populateDataTable(data) {
+						$("#datatable-editable").DataTable().clear();
+
+						// Ini digunakan untuk menghitung jumlah data yang ada di parameter data, 
+						// karena parameter data yang dimasukan adalah myJsonData maka jumlah data yang
+						// akan dihitung adalah jumlah data myJsonData itu sendiri 
+						var length = data.length;	
+
+						// Perulangan for untuk memasukan data ke variable, akan diulang sekian kali sesuai length nya
+						for (var i = 0; i < length; i++) {
+						
+						// data name urutan ke i
+						var a=data[i].title;
+						// data email sekolah urutan ke i
+						var b=data[i].aspect;
+						// data asal sekolah urutan ke i
+						var c=data[i].description;
+						
+						// Ini membuat tombol edit yang diklik akan dialihkan ke page detail by id  dan tombol add to assesr yg ketika diklik dia akan memanggil fungsi add to assesor dengan parameternya id dari data itu sendiri
+						var action = "<a href='#?id="+data[i]._id+"'>edit</a>&nbsp&nbsp&nbsp"+"<a href='#' onclick=add_to_assesor('"+data[i]._id+"') data-toggle='modal' data-target='#con-close-modal'>delete</a>";
+						$('#datatable-editable').dataTable().fnAddData([
+						a,
+						b,
+						c,
+						action
+						]);
+						}
+					}
+
+					// Ini adalah function add to assesor, bekerja bila tombol "add to assesro" di klik 
+					function delete_modul(id){
+						// Memasukan id ke dalam text input dengan id : id_user
+						document.getElementById('id_user').value = id;
+					}
+
+					// Ini adalah function add_to_assesor_confirmation, bekerja bila tombol "ya, tambahkan" di klik
+					function delete_modul_confirmation(){
+						// Membentuk data yang ingin dikirimkan dengan metode post 
+						var data_user = {
+							// Didalam ini kita buat datanya (sesuaikan dengan body dari reques POST itu sendiri di API)
+						}
+						// Melakukan post ke api 
+						$.ajax({
+						type: 'DELETE',
+						// ini urlnya kurang lengkap karena api belum disediakan 
+						url: "http://localhost/elearning/public/api/v1/modul"
+						})
+
+						// Done function ini tidak akan berfungsi karena terjadi error yang disebabkan oleh api yang tidak benar
+						.done(function(data){
+							if(data.error==false){
+								alert("Berhasil Menambahkan Assesor")
+							}else{
+								alert("Gagal Menambahkan Assesor")
+							}
+						})
+					}
+				});
+			</script>
 
 
         @endsection

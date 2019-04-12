@@ -242,8 +242,6 @@
                                 </ul>
                             </li>
 
-                            <li><a href="{{ url('/penilaian_user') }}"><i class="ti-medall"></i><span>Penilaian User</span></a></li>
-
                         </ul>
                         <div class="clearfix"></div>
                     </div>
