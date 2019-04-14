@@ -24,8 +24,8 @@
                     </ol>
                 </div>
             </div>
-            
-            
+
+
               <br>
 
                 <div class="col-lg-12">
@@ -38,8 +38,8 @@
                             <br>
                             <div>
                             <table class="table">
-                                     
-                                    <tbody> 
+
+                                    <tbody>
                                             <tr sty>
                                                     <th scope="row" class="col-lg-4">Nama</th>
                                                     <td>:</td>
@@ -57,7 +57,7 @@
                                                 <td>:</td>
                                                 <td id="email"></td>
                                                 <td> </td>
-                                            </tr>     
+                                            </tr>
                                             <tr>
                                                 <th scope="row" class="col-lg-4">Jenis Kelamin</th>
                                                 <td>:</td>
@@ -95,18 +95,18 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-12">
                         <div class="panel panel-color panel-custom">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Progress User</h3> 
-                            </div> 
-                            <div class="panel-body"> 
+                                <h3 class="panel-title">Progress User</h3>
+                            </div>
+                            <div class="panel-body">
                                     <div class="row">
                                             <div class="col-md-6">
                                                 <div class="p-20">
                                                     <h5><b>Alamat :</b></h5>
-                                                    <p id="alamat" class="text-muted m-b-15 font-13">                                                   
+                                                    <p id="alamat" class="text-muted m-b-15 font-13">
                                                     <div class="m-t-20">
                                                         <h5><b>Nama Kecamatan :</b></h5>
                                                         <p id="kecamatan" class="text-muted m-b-15 font-13">
@@ -118,7 +118,7 @@
                                                             <p id="kota" class="text-muted m-b-15 font-13">
                                                             </p>
                                                         </div>
-                                                    
+
                                                     <div class="m-t-20">
                                                         <h5><b>Nama Kabupaten :</b></h5>
                                                         <p id="kabupaten" class="text-muted m-b-15 font-13">
@@ -128,13 +128,13 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="col-md-6">
                                                     <div class="p-20">
                                                             <h5><b>Kode Propinsi :</b></h5>
                                                             <p id="kode_prov" class="text-muted m-b-15 font-13">
                                                             </p>
-                                                           
+
                                                             <div class="m-t-20">
                                                                 <h5><b>Nama Propinsi :</b></h5>
                                                                 <p id="nama_prov" class="text-muted m-b-15 font-13">
@@ -146,7 +146,7 @@
                                                                     <p id="lintang" class="text-muted m-b-15 font-13">
                                                                     </p>
                                                                 </div>
-                                                            
+
                                                             <div class="m-t-20">
                                                                 <h5><b>Bujur :</b></h5>
                                                                 <p id="bujur" class="text-muted m-b-15 font-13">
@@ -161,7 +161,7 @@
                 </div>
 
     </div> <!-- container -->
-                   
+
     </div> <!-- content -->
 
     <footer class="footer text-right">
@@ -215,10 +215,10 @@ $(document).ready(function(){
 
     // membuat tag html dengan id alamat akan menampilkan data alamat sekolah
     document.getElementById('alamat').innerHTML = data.school.alamat_jalan
-    
+
     // membuat tag html dengan id kecamatan akan menampilkan data kecamatan
     document.getElementById('kecamatan').innerHTML = data.school.kecamatan
-    
+
     // membuat tag html dengan id kode_kab_kota akan menampilkan data kode kabupaten/kota
     document.getElementById('kota').innerHTML = data.school.kode_kab_kota
 
@@ -243,4 +243,3 @@ $(document).ready(function(){
 </script>
 
 @endsection
-

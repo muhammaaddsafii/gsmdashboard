@@ -38,6 +38,10 @@ class PagesController extends Controller
         return view('input_modul');
     }
 
+    public function detail_modul(){
+      return view('detail_modul');
+    }
+
     public function list_materi_basic(){
         return view('list_materi_basic');
     }
