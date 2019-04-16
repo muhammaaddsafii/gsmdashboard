@@ -66,7 +66,7 @@
 													<h4 class="modal-title">Delete Modul</h4>
 												</div>
 												<div class="modal-body">
-												  <div id="add_modul" class="row">
+												  <div class="row">
 														<div class="col-md-12">
 															<div class="form-group">
 																<p for="field" class="control-label">Apakah anda yakin ingin menghapus modul ini?</p>

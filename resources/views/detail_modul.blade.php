@@ -82,6 +82,9 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
+                                        <div id="field_image_exist">
+
+                                        </div>
                                         <label for="">Upload Gambar</label>
                                         <input type="file" class="form-control" id="image_0" name="image[]" placeholder="Masukkan Gambar">
                                         <div id="field_url_image" >
@@ -110,6 +113,34 @@
                     </div>
                 </div>
 
+                <input type="text" id="id_filename" style="display:none">
+                <!-- bagian modal  -->
+                <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">Delete Images</h4>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="form-group">
+                              <p for="field" class="control-label">Apakah anda yakin ingin menghapus gambar ini?</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Tidak</button>
+                        <!-- onclick ini akan memanggil/mentrigger fungsi add_to_assesor_confirmation -->
+                        <!-- Kalau ini diklik untuk sementara waktu ngk bakal terjadi apa-apa karena eror, eror disebabkan karena request post gagal karena api yang dituliskan tidak benar -->
+                        <button type="button" onclick="delete_image_confirmation()" class="btn btn-primary waves-effect waves-light" data-dismiss="modal">Iya</button>
+                      </div>
+                    </div>
+                  </div>
+                </div> <!-- bagian modal  -->
+
         </div> <!-- container -->
     </div> <!-- content -->
     <footer class="footer">
@@ -128,49 +159,47 @@ $(document).ready(function(){
   .done(function(data){
     console.log(data)
 
-    document.getElementById('aspect').innerHTML = data.aspect
-    document.getElementById('grade').innerHTML = data.grade
+    document.getElementById('aspect').value = data.aspect
+    document.getElementById('grade').value = data.grade
     document.getElementById('title').value = data.title
     document.getElementById('description').innerHTML = data.description
     document.getElementById('task').innerHTML = data.task
 
-    for (var i=0; i<data.material.video.length; i++) {
+    for (var i=0; i<data.video.length; i++) {
       if (i==0) {
-        document.getElementById('video_0').value = data.material.video[i].url
+        document.getElementById('video_0').value = data.video[i].url
       } else {
         $('#field_url_video').append(
           '<div style="margin-left:-10px;margin-top:10px;margin-bot:10px" id="row'+i+'" class="col-md-12">'+
-          '<input type="text" class="form-control" id="video_0" name="video[]" placeholder="Masukkan URL Video" value="'+data.material.video[i].url+'">'+
-          '<button  style="display:inline;margin-top:10px;" name="remove" id="'+i+'" class="btn btn-danger btn_remove">Delete</button>'+
+          '<input type="text" class="form-control" id="video_0" name="video[]" placeholder="Masukkan URL Video" value="'+data.video[i].url+'">'+
+          '<button style="display:inline;margin-top:10px;" name="remove" id="'+i+'" class="btn btn-danger btn_remove">Delete</button>'+
           '</div>'
         )
       }
     }
 
-    for (var i=0; i<data.material.document.length; i++) {
+    for (var i=0; i<data.document.length; i++) {
       if (i==0) {
-        document.getElementById('document_0').value = data.material.document[i].url
+        document.getElementById('document_0').value = data.document[i].url
       } else {
         $('#field_url_document').append(
-          '<div style="margin-left:-10px;margin-top:10px;margin-bot:10px" id="row'+i+'" class="col-md-12">'+
-          '<input type="text" class="form-control" id="document_0" name="document[]" placeholder="Masukkan URL Dokumen" value="'+data.material.document[i].url+'">'+
-          '<button  style="display:inline;margin-top:10px;" name="remove" id="'+i+'" class="btn btn-danger btn_remove">Delete</button>'+
+          '<div style="margin-left:-10px;margin-top:10px;margin-bot:10px" id="row_document'+i+'" class="col-md-12">'+
+          '<input type="text" class="form-control" id="document_0" name="document[]" placeholder="Masukkan URL Dokumen" value="'+data.document[i].url+'">'+
+          '<button style="display:inline;margin-top:10px;" name="remove" id="'+i+'" class="btn btn-danger btn_remove2">Delete</button>'+
           '</div>'
-        )
+        );
       }
     }
 
-    for (var i=0; i<data.material.image.length; i++) {
-      if (i==0) {
-
-      } else {
-        $('#field_url_image').append(
-          '<div style="margin-left:-10px;margin-top:10px;margin-bot:10px" id="row'+i+'" class="col-md-12">'+
-          '<input type="file" class="form-control" id="image_0" name="image[]" placeholder="Masukkan Gambar">'+
-          '<button  style="display:inline;margin-top:10px;" name="remove" id="'+i+'" class="btn btn-danger btn_remove">Delete</button>'+
-          '</div>'
-        )
-      }
+    for (var i=0; i<data.image.length; i++) {
+      $('#field_image_exist').append(
+        '<div style="margin-left:-10px;margin-top:10px;margin-bot:10px;display:table-cell" id="row_image_exist'+i+'" class="col-md-12">'+
+        '<img id="preview" src="images/'+data.image[i].filename+'" alt="'+data.image[i].filename+'" height="auto" width="150px">'+
+        //'<input type="hidden" class="form-control" id="image_exist'+i+'" name="image_exist'+i+'" value="'+data.image[i].filename+'">'+
+        //'<button style="display:inline;margin-top:10px;" name="remove" id="'+i+'" class="btn btn-danger btn_remove4">Delete</button>'+
+        '<a href="#" onclick=delete_image("'+data.image[i].filename+'") data-toggle="modal" data-target="#con-close-modal" class="btn btn-danger">Delete</button>'+
+        '</div>'
+      );
     }
   })
 
@@ -185,6 +214,7 @@ $(document).ready(function(){
     '</div>'
     );
   });
+
   $(document).on('click', '.btn_remove', function(){
     var button_id = $(this).attr("id");
     $('#row'+button_id+'').remove();
@@ -201,10 +231,12 @@ $(document).ready(function(){
     '</div>'
     );
   });
+
   $(document).on('click', '.btn_remove2', function(){
     var button_id = $(this).attr("id");
     $('#row_document'+button_id+'').remove();
   });
+
   $('#add_image').click(function(event ){
     event.preventDefault();
     var row = document.getElementsByName('image[]').length;
@@ -216,25 +248,55 @@ $(document).ready(function(){
     '</div>'
     );
   });
+
   $(document).on('click', '.btn_remove3', function(){
     var button_id = $(this).attr("id");
     $('#row_image'+button_id+'').remove();
   });
+
+  /*$(document).on('click', '.btn_remove4', function(){
+    var button_id = $(this).attr("id");
+    $('#row_image_exist'+button_id+'').remove();
+  });
+  */
 })
 </script>
 <script>
 function update_modul(){
-  var datas = new FormData(document.getElementById('update_modul_form'))
+  var id = new URLSearchParams(document.location.search.substring(1));
+  var id_modul = id.get("id");
+
+  var datas = new FormData(document.getElementById('update_modul_form'));
   $.ajax({
     type: 'POST',
-    url: 'http://localhost/elearning/public/api/v1/modul/',
+    url: 'http://localhost/elearning/public/api/v1/modul/'+id_modul,
     processData: false,
     contentType: false,
     data: datas
   })
   .done(function(data){
-    console.log(data)
-    alert('Modul updated.')
+    console.log(data);
+    alert(data.message);
+    window.location.reload();
+  })
+}
+
+function delete_image(filename){
+  document.getElementById('id_filename').value = filename;
+}
+
+function delete_image_confirmation(){
+  var id = new URLSearchParams(document.location.search.substring(1));
+  var id_modul = id.get("id");
+  $.ajax({
+    type: 'DELETE',
+    url: "http://localhost/elearning/public/api/v1/modul/"+id_modul+"/"+document.getElementById('id_filename').value
+  })
+  .done(function(data){
+    console.log(data);
+    alert(data.message);
+    window.location.reload();
+
   })
 }
 </script>
