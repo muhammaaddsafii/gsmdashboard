@@ -171,8 +171,6 @@
 </div>
 
 <script>
-
-
 $(document).ready(function(){
     // Ambil id dari url
     var id = new URLSearchParams(document.location.search.substring(1));

@@ -121,7 +121,7 @@
 						var c=data[i].description;
 						
 						// Ini membuat tombol edit yang diklik akan dialihkan ke page detail by id  dan tombol add to assesr yg ketika diklik dia akan memanggil fungsi add to assesor dengan parameternya id dari data itu sendiri
-						var action = "<a href='#?id="+data[i]._id+"'>edit</a>&nbsp&nbsp&nbsp"+"<a href='#' onclick=add_to_assesor('"+data[i]._id+"') data-toggle='modal' data-target='#con-close-modal'>delete</a>";
+						var action = "<a href='edit_materi_basic?id="+data[i]._id+"'>edit</a>&nbsp&nbsp&nbsp"+"<a href='#' onclick=add_to_assesor('"+data[i]._id+"') data-toggle='modal' data-target='#con-close-modal'>delete</a>";
 						$('#datatable-editable').dataTable().fnAddData([
 						a,
 						b,

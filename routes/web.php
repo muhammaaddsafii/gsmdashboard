@@ -12,6 +12,8 @@
 */
 
 Route::get('/', 'PagesController@index');
+Route::get('/login', 'PagesController@login');
+Route::get('/forgot', 'PagesController@forgot');
 Route::get('/list_user', 'PagesController@list_user');
 Route::get('/list_sekolah_terdaftar', 'PagesController@list_sekolah_terdaftar');
 Route::get('/list_sekolah_gsm', 'PagesController@list_sekolah_gsm');
@@ -24,3 +26,5 @@ Route::get('/list_materi_advanced', 'PagesController@list_materi_advanced');
 Route::get('/detail_sekolah', 'PagesController@detail_sekolah');
 Route::get('/detail_user', 'PagesController@detail_user');
 Route::get('/penilaian_user', 'PagesController@penilaian_user');
+Route::get('/edit_materi_basic', 'PagesController@edit_materi_basic');
+Route::get('/edit_materi_advance', 'PagesController@edit_materi_advance');

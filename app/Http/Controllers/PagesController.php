@@ -10,6 +10,14 @@ class PagesController extends Controller
         return view('welcome');
     }
 
+    public function login(){
+        return view('login');
+    }
+
+    public function forgot(){
+        return view('forgot');
+    }
+
     public function list_user(){
         return view('list_user');
     }
@@ -57,4 +65,13 @@ class PagesController extends Controller
     public function penilaian_user(){
         return view('penilaian_user');
     }
+
+    public function edit_materi_basic(){
+        return view('edit_materi_basic');
+    }
+
+    public function edit_materi_advance(){
+        return view('edit_materi_advance');
+    }
+
 }
