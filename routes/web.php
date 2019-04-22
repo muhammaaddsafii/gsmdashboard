@@ -26,5 +26,9 @@ Route::get('/list_materi_advanced', 'PagesController@list_materi_advanced');
 Route::get('/detail_sekolah', 'PagesController@detail_sekolah');
 Route::get('/detail_user', 'PagesController@detail_user');
 Route::get('/penilaian_user', 'PagesController@penilaian_user');
+<<<<<<< HEAD
 Route::get('/edit_materi_basic', 'PagesController@edit_materi_basic');
 Route::get('/edit_materi_advance', 'PagesController@edit_materi_advance');
+=======
+Route::get('/detail_modul', 'PagesController@detail_modul');
+>>>>>>> 1eed75326ce7d28af37aab24e7218c6a893d365e
